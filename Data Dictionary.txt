@@ -1,0 +1,94 @@
+base_brands
+-
+brand_uuid varchar pk ## brands._id.$oid
+item_barcode varchar fk -< fact_spend_brands.item_barcode ## brands.barcode
+brand_code varchar ## brands.brandCode
+brand_category varchar ## brands.category
+brand_category_code varchar ## brands.categoryCode
+cpg_reference_id varchar ##  brands.cpg.$id
+cpg_reference varchar ##  brands.cpg.$id
+top_brand boolean ## brands.topBrand
+brand_name varchar ## brands.name
+
+base_receipts
+-
+receipt_id varchar pk fk ## receipts._id.$oid
+bonus_points_earned int ## receipts.bonusPointsEarned
+bonus_points_earned_reason varchar ## receipts.bonusPointsEarnedReason
+receipt_created_date datetime ## receipts.createDate.$date
+receipt_scanned_date datetime ## receipts.dateScanned.$date
+finished_date datetime ## receipts.finishedDate.$date
+modify_date datetime ## receipts.modifyDate.$date
+points_awarded_date datetime ## receipts.pointsAwardedDate.$date
+points_earned real ## receipts.pointsEarned
+purchase_date datetime ## receipts.purchaseDate.$date
+purchased_item_count int ## receipts.purchasedItemCount
+rewards_receipt_status varchar ## receipts.rewardsReceiptStatus
+total_spent real ## receipts.totalSpent
+user_id varchar fk  # receipts.userId
+
+base_receipts_items
+-
+receipt_item_uuid varchar pk ## uuid
+receipt_id varchar fk  ## receipts._id.$oid
+user_id varchar fk # receipts.userId
+item_barcode varchar fk ## receipts.rewardsReceiptItemList.barcode
+item_description varchar ## receipts.rewardsReceiptItemList.description
+item_final_price real ## receipts.rewardsReceiptItemList.finalPrice
+item_price real ## receipts.rewardsReceiptItemList.itemPrice
+item_points_earned real ## receipts.rewardsReceiptItemList.pointsEarned
+needs_fetch_review boolean ## receipts.rewardsReceiptItemList.needsFetchReview
+need_fetch_review_reason varchar ## receipts.rewardsReceiptItemList.needsFetchReviewReason
+partner_item_id varchar fk ## receipts.rewardsReceiptItemList.partnerItemId
+points_not_awarded_reason varchar ## receipts.rewardsReceiptItemList.pointsNotAwardedReason
+points_player_id varchar ##receipts.rewardsReceiptItemList.pointsPayerId
+rewards_group varchar ## receipts.rewardsReceiptItemList.rewardsGroup
+reward_product_partner_id varchar ## receipts.rewardsReceiptItemList.rewardsProductPartnerId
+prevent_target_gap_points boolean ## receipts.rewardsReceiptItemList.preventTargetGapPoints
+quantity_purchased int ## receipts.rewardsReceiptItemList.quantity_purchased
+user_flagged_barcode varchar ## receipts.rewardsReceiptItemList.user_flagged_barcode
+user_flagged_new_item boolean ## receipts.rewardsReceiptItemList.userFlaggedNewItem
+user_flagged_price real ## receipts.rewardsReceiptItemList.userFlaggedPrice
+user_flagged_quantity int ## receipts.rewardsReceiptItemList.userFlaggedQuantity
+
+base_users
+-
+user_id varchar pk ## users._id.$oid
+active_user boolean ## users.active
+user_created_date datetime ## users.createdDate.$date
+user_last_login datetime ## users.last_login.$date
+user_role varchar ## users.role
+user_sign_up_source varchar ## users.signUpSource
+user_email varchar ## users.email
+user_state varchar ## users.state
+
+fact_spend_brands
+-
+receipt_item_uuid varchar pk fk - base_receipts_items.receipt_item_uuid
+receipt_id varchar fk >- base_receipts.receipt_id
+user_id varchar fk >- base_users.user_id
+active_user boolean
+user_created_date datetime
+receipt_scanned_date datetime
+purchase_date datetime
+rewards_receipt_status varchar
+item_barcode varchar
+item_final_price real ## receipts.rewardsReceiptItemList.finalPrice -- which is the real spend?
+item_price real ## receipts.rewardsReceiptItemList.itemPrice --which is the real spend?
+needs_fetch_review boolean
+need_fetch_review_reason varchar
+brand_name varchar
+
+fact_spend_total
+-
+receipt_id varchar pk fk >- base_receipts.receipt_id
+user_id varchar fk >- base_users.user_id
+active_user boolean
+user_created_date datetime
+receipt_scanned_date datetime
+purchase_date datetime
+rewards_receipt_status varchar
+purchased_item_count int
+total_spent real
+
+
