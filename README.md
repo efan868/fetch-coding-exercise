@@ -1,9 +1,8 @@
 # fetch-coding-exercise
 
-- Please find the ERD and data dictionary under the ERD folder
-- Find the sql queries I would use that directly answers a predetermined question from a business stakeholder under sql
-  - Please note that do to issues with the receipts.json file I was not able to load them into my colab notebook and run the sql queries there
-- I've documented the issue in this notebook linked here - https://colab.research.google.com/drive/1nmpx1_3OluElJf8IR10u33VvY1jg0Qq5?usp=sharing
-- You can also view a saved output under code
-- My message and questions to the stakeholder are under the `message to stakeholders.txt` file
+- The ERD and data dictionary are located in the ERD folder.
+- The SQL queries that answer a predefined business stakeholder question in the SQL folder.
+  - Due to issues with the receipts.json file, I wasn’t able to load it into my Colab notebook and run the SQL queries there. I’ve documented the issue in this notebook.
+  - A saved output is available in the code folder. A live version of the code can be found here https://colab.research.google.com/drive/1nmpx1_3OluElJf8IR10u33VvY1jg0Qq5?usp=sharing
+- My message and questions to the stakeholder can be found in the message to stakeholders.txt file.
 
