@@ -1,0 +1,13 @@
+Hey there,
+
+I’ve been reviewing the receipts dataset and the questions you’d like us to explore, and I have a few follow-up questions to help me better understand your needs.
+
+ - First, could you share how Fetch processes each receipt after it’s scanned? I’m wondering if there are external factors, like discounts or sales tax, that might affect the total or individual item spend, and whether the app accounts for these factors in any specific way.
+ - Next, how do you define “spend,” “users,” and “transactions” when speaking with clients? I’ve noticed that some receipts are flagged as “needs Fetch review” or are pending acceptance or rejection, and sometimes users become deactivated. Should these receipts be excluded by default in certain analyses? 
+ - I’d also like to know if there is a parent-company hierarchy for brands, and whether you’d like this structure included in our data model. This could help improve the dataset’s quality over time.
+ - Another area I’m curious about is how barcodes are assigned to each brand, how they’re maintained, and how often they’re updated.
+ - Finally, do you have a standard template of key data you usually share with clients? I’d love to see it so we can optimize our dataset to address those questions more efficiently.
+
+As our user base grows and we capture more receipts, our dataset—and related costs—will also grow. We can manage this by creating aggregate tables, materialized views, and possibly using an incremental model in dbt for more efficient runs. Understanding your definitions of these key metrics will be crucial in designing our tables so we can serve you better while keeping costs under control.
+
+Thank you in advance!
